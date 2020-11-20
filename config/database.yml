@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: cityWeather_production
-  username: <%= ENV['CITYWEATHER_DATABASE_USERNAME'] %>
-  password: <%= ENV['CITYWEATHER_DATABASE_PASSWORD'] %>
+  username: ENV['CITYWEATHER_DATABASE_USERNAME']
+  password: ENV['CITYWEATHER_DATABASE_PASSWORD']
