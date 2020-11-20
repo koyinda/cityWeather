@@ -7,5 +7,7 @@ module Types
     #   "Hello World"
     # end
       field :addSub, mutation: Mutations::AddSubscribe
+
+      field :remSub, mutation: Mutations::RemSubscribe
   end
 end
