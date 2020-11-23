@@ -63,3 +63,4 @@ gem "interactor-rails", "~> 2.0"
 gem 'httparty', '0.18.1'
 
 gem 'sidekiq'
+gem 'clockwork', require: false
