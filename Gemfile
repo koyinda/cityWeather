@@ -61,3 +61,5 @@ gem 'graphiql-rails', group: :development
 gem "interactor-rails", "~> 2.0"
 
 gem 'httparty', '0.18.1'
+
+gem 'sidekiq'
