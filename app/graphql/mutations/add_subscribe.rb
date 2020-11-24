@@ -8,7 +8,7 @@ module Mutations
       type Types::SubscribeType
   
       def resolve(email: nil, location: nil)
-        sub = Subscribe.find_by(email: email, location: location)
+        sub = Subscribe.find_by(email: email, location: location.downcase)
         if sub
           return sub = OpenStruct.new(
             id: "nil",
@@ -21,7 +21,7 @@ module Mutations
           if response.city_details["location"].downcase == location.downcase
             sub = Subscribe.create!(
               email: email,
-              location: location
+              location: location.downcase
             )
           else
             return sub = OpenStruct.new(

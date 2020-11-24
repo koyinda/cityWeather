@@ -8,7 +8,7 @@ module Mutations
       type Types::SubscribeType
   
       def resolve(email: nil, location: nil)
-        sub = Subscribe.find_by(email: email, location: location)
+        sub = Subscribe.find_by(email: email, location: location.downcase)
         return {} unless sub
         Subscribe.destroy(sub[:id])
       end
