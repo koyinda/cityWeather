@@ -3,6 +3,6 @@ class MailsJob < ApplicationJob
 
   def perform(message)
     # Do something later
-    CityDetailsMailer.submission(message, 'oyinda.kosemani@gmail.com').deliver
+    CityDetailsMailer.submission(message, '').deliver
   end
 end

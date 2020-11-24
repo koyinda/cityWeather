@@ -6,6 +6,6 @@ require 'clockwork'
 
   include Clockwork
 
-every(1.day, 'Send notifications', :at=>"00:00"){
+every(1.day, 'Send notifications', :at=>"00:01"){
     `rake SendDailyWorker:perform`
 }

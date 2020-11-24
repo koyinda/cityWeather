@@ -6,7 +6,17 @@ class CityDetails
   def call
     response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q='+context.search+'&appid='+ENV["CITYWEATHER_APIKEY"])
     json = JSON.parse(response.body)
-    # print json
+    print response.code
+    return context.city_details = OpenStruct.new(
+      location: json["message"],
+      temperature: "Nil",
+      pressure: "Nil",
+      humidity: "Nil",
+      longitude: "Nil",
+      latitude: "Nil",
+      sunrise: "Nil",
+      sunset: "Nil"
+     ) unless response.success?
     context.city_details = OpenStruct.new(
       location: json["name"],
       temperature: json["main"]["temp"],

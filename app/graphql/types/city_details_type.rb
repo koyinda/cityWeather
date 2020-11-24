@@ -1,12 +1,12 @@
 module Types
   class CityDetailsType < Types::BaseObject
-    field :location, String, null: false
-    field :temperature, String, null: false
-    field :pressure, String, null: false
-    field :humidity, String, null: false
-    field :longitude, String, null: false
-    field :latitude, String, null: false
-    field :sunrise, String, null: false
-    field :sunset, String, null: false
+    field :location, String, null: true
+    field :temperature, String, null: true
+    field :pressure, String, null: true
+    field :humidity, String, null: true
+    field :longitude, String, null: true
+    field :latitude, String, null: true
+    field :sunrise, String, null: true
+    field :sunset, String, null: true
   end
 end

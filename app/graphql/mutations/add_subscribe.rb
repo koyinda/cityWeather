@@ -8,10 +8,29 @@ module Mutations
       type Types::SubscribeType
   
       def resolve(email: nil, location: nil)
-        sub = Subscribe.create!(
-          email: email,
-          location: location
-        )
+        sub = Subscribe.find_by(email: email, location: location)
+        if sub
+          return sub = OpenStruct.new(
+            id: "nil",
+            email: email,
+            location: location+": Not added, the email and location combo already exist"
+          )
+        else
+          response = CityDetails.call(search: location)
+
+          if response.city_details["location"].downcase == location.downcase
+            sub = Subscribe.create!(
+              email: email,
+              location: location
+            )
+          else
+            return sub = OpenStruct.new(
+              id: nil,
+              email: email,
+              location: location+": does not exist"
+            )
+          end
+        end
       end
     end
   end
