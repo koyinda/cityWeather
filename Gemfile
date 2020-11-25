@@ -67,3 +67,7 @@ gem 'sidekiq'
 gem 'clockwork', require: false
 
 gem 'jquery-ui-rails'
+
+
+gem 'uglifier'
+gem 'coffee-rails'
