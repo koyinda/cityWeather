@@ -8,7 +8,7 @@ class SendDailyWorker
       # puts subs.location
       # response = CityDetails.call(search: subs.location)
       # CityDetailsMailer.submission(response.city_details, subs.email).deliver
-      CityDetailsMailer.submission({}, 'oyinda.kosemani@gmail.com').deliver
+      CityDetailsMailer.submission("25-nov-2020", 'oyinda.kosemani@gmail.com').deliver
 
     end
   end
