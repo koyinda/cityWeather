@@ -65,3 +65,5 @@ gem 'httparty', '0.18.1'
 
 gem 'sidekiq'
 gem 'clockwork', require: false
+
+gem 'jquery-ui-rails'
