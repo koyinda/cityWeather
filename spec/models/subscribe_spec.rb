@@ -4,7 +4,8 @@ require 'rails_helper'
 
 RSpec.describe Subscribe, type: :model do
     subject {
-        Subscribe.new(email: "oyindamola.kosemani@gmail.com", location: "Lagos")
+        Subscribe.new(email: "a.b@gmail.com", location: "Lagos")
+        Subscribe.new(email: "a.c@gmail.com", location: "Lagos")
     }
     before {
         subject.save
@@ -27,13 +28,13 @@ RSpec.describe Subscribe, type: :model do
     subject.email = "Anything"
     expect(subject).to be_valid
   end
-#   it "is not valid without a email" do
-#     subscribe = Subscribe.new(email: nil)
-#     expects(subscribe).to_not be_valid
-#   end
-#   it "is not valid without a location" do
-#     subscribe = Subscribe.new(location: nil)
-#     expects(subscribe).to_not be_valid
-#   end
+  it "subscription should be found" do
+    # sub = Subscribe.find_by(email: subject1.email, location: subject1.location)
+    expect(Subscribe.find_by(email: subject.email, location: subject.location)).to be_valid
+  end
+
+  it "subscription should be found" do
+    sub = Subscribe.find_by(email: subject.email, location: subject.location)
+    expect(Subscribe.destroy(sub[:id])).to be_valid
+  end
 end
-#spec/models/subscribe_spec.rb 

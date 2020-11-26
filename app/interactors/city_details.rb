@@ -1,4 +1,5 @@
 require 'httparty'
+
 class CityDetails
   include Interactor
   include HTTParty
@@ -9,13 +10,13 @@ class CityDetails
     print response.code
     return context.city_details = OpenStruct.new(
       location: json["message"],
-      temperature: "Nil",
-      pressure: "Nil",
-      humidity: "Nil",
-      longitude: "Nil",
-      latitude: "Nil",
-      sunrise: "Nil",
-      sunset: "Nil"
+      temperature: json["message"],
+      pressure: json["message"],
+      humidity: json["message"],
+      longitude: json["message"],
+      latitude: json["message"],
+      sunrise: json["message"],
+      sunset: json["message"]
      ) unless response.success?
     context.city_details = OpenStruct.new(
       location: json["name"],

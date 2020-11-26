@@ -17,11 +17,12 @@ module Types
     def subscribe
       Subscribe.all
     end
+
     description 'Returns lat/lng of the city and the time of sunrise and sunset'
     field :findCity, Types::CityDetailsType, null: false do
       # Types::CityDetailsType
         argument :search, String, required: true
-    end
+    end   
     def findCity(search)
       response = CityDetails.call(search: search[:search])
       response.city_details
