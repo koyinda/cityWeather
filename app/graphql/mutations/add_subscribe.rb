@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Mutations
+  # app/graphql/mutations/add_subscribe
   class AddSubscribe < Mutations::BaseMutation
     # arguments passed to the `resolve` method
     argument :email, String, required: true
@@ -10,11 +13,7 @@ module Mutations
     def resolve(email: nil, location: nil)
       sub = Subscribe.find_by(email: email, location: location.downcase)
       if sub
-        return sub = OpenStruct.new(
-          id: "nil",
-          email: email,
-          location: location+": Not added, the email and location combo already exist"
-        )
+        raise GraphQL::ExecutionError, ': Not added, the email and location combo already exist'
       else
         response = CityDetails.call(search: location)
 
@@ -24,11 +23,7 @@ module Mutations
             location: location.downcase
           )
         else
-          return sub = OpenStruct.new(
-            id: nil,
-            email: email,
-            location: location+": does not exist"
-          )
+          raise GraphQL::ExecutionError, ': does not exist'
         end
       end
     end

@@ -9,11 +9,7 @@ module Mutations
 
     def resolve(email: nil, location: nil)
       sub = Subscribe.find_by(email: email, location: location.downcase)
-      return OpenStruct.new(
-        id: 0,
-        email: email,
-        location: location + ': combination does not exist'
-      ) unless sub
+      raise GraphQL::ExecutionError, 'combination does not exist' unless sub
       Subscribe.destroy(sub[:id])
     end
   end
